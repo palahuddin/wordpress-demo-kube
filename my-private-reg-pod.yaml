@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
   - name: apache-app
-    image: docker pull harbor.jojonomic.io/infra/wordpress:latest
+    image: harbor.jojonomic.io/infra/wordpress:latest
   imagePullSecrets:
   - name: regcred
