@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: private-reg
+  name: php-apache-pod
 spec:
   containers:
-  - name: private-reg-container
+  - name: php-apache-pod
     image: harbor.jojonomic.io/infra/php/apache
   imagePullSecrets:
   - name: regcred
