@@ -60,7 +60,7 @@ spec:
   ports:
   - port: 3306
     targetPort: 3306
-  type: NodePort
+  type: LoadBalancer
   selector:
     name: wordpress-mysql-pod
     app: wordpress-app-demo-kube
