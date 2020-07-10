@@ -54,13 +54,12 @@ kind: Service
 metadata:
   name: wp-mysql
   labels: 
-    name: w-mysql-service
+    name: wp-mysql-service
     app: wordpress-app-demo-kube   
 spec: 
   ports:
   - port: 3306
     targetPort: 3306
-  type: LoadBalancer
   selector:
     name: wordpress-mysql-pod
     app: wordpress-app-demo-kube
