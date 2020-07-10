@@ -7,8 +7,7 @@ metadata:
     app: wordpress-app-demo-kube   
 spec: 
   contaniners:
-  - name: wp-app
-    image: falahalaf/wp-app
-    ports:
-    - contaninerPort: 80
-    
+   - name: wp-app
+     image: falahalaf/wp-app
+     ports:
+     - contaninerPort: 80
