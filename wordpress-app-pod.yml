@@ -9,7 +9,7 @@ metadata:
 spec: 
   containers:
    - name: wp-app
-     image: docker.io/falahalaf/wp-app
+     image: docker.io/falahalaf/wordpress
      ports:
      - containerPort: 80
 
@@ -43,7 +43,7 @@ metadata:
 spec: 
   containers:
    - name: wp-app
-     image: docker.io/falahalaf/wp-mysql
+     image: docker.io/falahalaf/wordpress
      ports:
      - containerPort: 3306
 
