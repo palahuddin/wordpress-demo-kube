@@ -10,6 +10,8 @@ spec:
   containers:
   - name: apache-harbor
     image: harbor.jojonomic.io/infra/wordpress:latest
+    ports:
+     - containerPort: 80
   imagePullSecrets:
   - name: regcred
 
