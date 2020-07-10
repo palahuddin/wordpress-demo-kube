@@ -3,9 +3,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  labels:
-    name: apache-pod
-    app: apache-pod-harbor
+  name: apache-pod
 spec:
   containers:
   - name: apache-app
@@ -28,6 +26,4 @@ spec:
   type: LoadBalancer
   selector:
     name: apache-pod
-    app: apache-pod-harbor
-
 
