@@ -8,6 +8,6 @@ metadata:
 spec: 
   contaniners:
    - name: wp-app
-     image: falahalaf/wp-app
+     image: docker.io/falahalaf/wp-app
      ports:
      - contaninerPort: 80
