@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: bppt-pod
+  name: api-gateway-pod
   labels: 
-    name: bppt-app-pod
-    app: bppt-app-demo-kube   
+    name: api-gateway-app-pod
+    app: api-gateway-app-demo-kube   
 spec: 
   containers:
-   - name: wp-app
-     image: harbor.jojonomic.io/bppt/api-gateway@sha256:795364089edb4ae1dc2fdaa0093a3adbf2b7a5cdcc779f5838f2a770131f1491
+   - name: api-gateway-service
+     image: docker pull harbor.jojonomic.io/jojolab/api-gateway@sha256:03e7c46187a64c2faacb3cc91a250272f933d0d2bff033b505872b15ef14caa9
      ports:
      - containerPort: 80
 
@@ -18,18 +18,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bppt-service
+  name: api-gateway-service
   labels: 
-    name: bppt-service
-    app: bppt-app-demo-kube   
+    name: api-gateway-service
+    app: api-gateway-app-demo-kube   
 spec: 
   ports:
   - port: 80
     targetPort: 80
   type: LoadBalancer
   selector:
-    name: bppt-app-pod
-    app: bppt-app-demo-kube
+    name: api-gateway-app-pod
+    app: api-gateway-app-demo-kube
 
 ---
 
@@ -38,8 +38,8 @@ kind: Pod
 metadata:
   name: memcached
   labels: 
-    name: bppt-app-memcached-pod
-    app: bppt-app-demo-kube   
+    name: api-gateway-app-memcached-pod
+    app: api-gateway-app-demo-kube   
 spec: 
   containers:
    - name: memcached
@@ -54,16 +54,16 @@ kind: Service
 metadata:
   name: memcached
   labels: 
-    name: bppt-memcached-service
-    app: bppt-app-demo-kube   
+    name: api-gateway-memcached-service
+    app: api-gateway-app-demo-kube   
 spec: 
   ports:
   - port: 11211
     targetPort: 11211
   type: LoadBalancer
   selector:
-    name: bppt-app-memcached-pod
-    app: bppt-app-demo-kube
+    name: api-gateway-app-memcached-pod
+    app: api-gateway-app-demo-kube
 
 
 
