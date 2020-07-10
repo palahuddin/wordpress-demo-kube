@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: private-reg-container
-    image: harbor.jojonomic.io/infra/php/apache@sha256:822252e82149a3d00c66d75b2bda027bc2c02327d258294151624ac067fd02c8
+    image: harbor.jojonomic.io/infra/php/apache
   imagePullSecrets:
   - name: regcred
 
