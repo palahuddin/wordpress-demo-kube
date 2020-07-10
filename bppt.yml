@@ -61,7 +61,7 @@ spec:
   ports:
   - port: 11211
     targetPort: 11211
-    nodePort: 11211
+    nodePort: 32222
   type: NodePort
   selector:
     name: api-gateway-app-memcached-pod
@@ -96,7 +96,7 @@ spec:
   ports:
   - port: 3306
     targetPort: 3306
-    nodePort: 3306
+    nodePort: 33006
   type: NodePort
   selector:
     name: mysql-pod
