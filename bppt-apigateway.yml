@@ -1,0 +1,34 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bppt-apigateway-pod
+  labels: 
+    name: bppt-apigateway-pod
+    app: bppt-apigateway-production   
+spec: 
+  containers:
+   - name: bppt-apigateway
+     image: harbor.jojonomic.io/bppt/api-gateway@sha256:795364089edb4ae1dc2fdaa0093a3adbf2b7a5cdcc779f5838f
+2a770131f1491
+     ports:
+     - containerPort: 80
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bppt-apigateway-pod-service
+  labels: 
+    name: bppt-apigateway-pod-service
+    app: bppt-apigateway-production   
+spec: 
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+  selector:
+    name: bppt-apigateway-pod
+    app: bppt-apigateway-production
+
