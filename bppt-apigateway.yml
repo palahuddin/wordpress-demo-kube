@@ -60,8 +60,7 @@ spec:
   ports:
   - port: 11211
     targetPort: 11211
-    nodePort: 11211
-  type: NodePort
+  type: LoadBalancer
   selector:
     name: bppt-app-memcached-pod
     app: bppt-app-demo-kube
