@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  labels: 
+    name: wordpress-service
+    app: wordpress-app-demo-kube   
+spec: 
+  - ports: 80
+    targetPort: 80
+  type: LoadBalancer
+  selector:
+    name: wordpress-app-pod
+    app: wordpress-app-demo-kube
