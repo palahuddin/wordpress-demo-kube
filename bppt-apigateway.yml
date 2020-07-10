@@ -31,3 +31,39 @@ spec:
     name: bppt-app-pod
     app: bppt-app-demo-kube
 
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memcached
+  labels: 
+    name: bppt-app-memcached-pod
+    app: bppt-app-demo-kube   
+spec: 
+  containers:
+   - name: memcached
+     image: harbor.jojonomic.io/jojolab/memcache@sha256:48cb7207e3d34871893fa1628f3a4984375153e9942facf82e25935b0a633c8a
+     ports:
+     - containerPort: 11211
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: memcached
+  labels: 
+    name: bppt-memcached-service
+    app: bppt-app-demo-kube   
+spec: 
+  ports:
+  - port: 11211
+    targetPort: 11211
+  type: LoadBalancer
+  selector:
+    name: bppt-app-memcached-pod
+    app: bppt-app-demo-kube
+
+
+
