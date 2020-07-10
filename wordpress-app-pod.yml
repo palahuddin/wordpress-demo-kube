@@ -1,1 +1,14 @@
-abcabc
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wordpress-pod
+  labels: 
+    name: wordpress-app
+    app: wordpress-app-demo-kube   
+spec: 
+  contaniners:
+  - name: wp-app
+    image: falahalaf/wp-app
+    ports:
+    - contaninerPort: 80
+    
