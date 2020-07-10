@@ -5,7 +5,7 @@ metadata:
   name: api-gateway-pod
   labels: 
     name: api-gateway-app-pod
-    app: api-gateway-app-demo-kube   
+    app: app-demo-kube   
 spec: 
   containers:
    - name: api-gateway
@@ -21,15 +21,16 @@ metadata:
   name: api-gateway-service
   labels: 
     name: api-gateway-service
-    app: api-gateway-app-demo-kube   
+    app: app-demo-kube   
 spec: 
   ports:
   - port: 80
     targetPort: 80
-  type: LoadBalancer
+    nodePort: 30000
+  type: NodePort
   selector:
     name: api-gateway-app-pod
-    app: api-gateway-app-demo-kube
+    app: app-demo-kube
 
 ---
 
@@ -38,8 +39,8 @@ kind: Pod
 metadata:
   name: memcached
   labels: 
-    name: api-gateway-app-memcached-pod
-    app: api-gateway-app-demo-kube   
+    name: app-memcached-pod
+    app: app-demo-kube   
 spec: 
   containers:
    - name: memcached
@@ -55,15 +56,50 @@ metadata:
   name: memcached
   labels: 
     name: api-gateway-memcached-service
-    app: api-gateway-app-demo-kube   
+    app: app-demo-kube   
 spec: 
   ports:
   - port: 11211
     targetPort: 11211
-  type: LoadBalancer
+    nodePort: 11211
+  type: NodePort
   selector:
     name: api-gateway-app-memcached-pod
-    app: api-gateway-app-demo-kube
+    app: app-demo-kube
 
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels: 
+    name: mysql-pod
+    app: app-demo-kube   
+spec: 
+  containers:
+   - name: mysql
+     image: docker.io/falahalaf/wp-mysql
+     ports:
+     - containerPort: 3306
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels: 
+    name: mysql-service
+    app: app-demo-kube   
+spec: 
+  ports:
+  - port: 3306
+    targetPort: 3306
+    nodePort: 3306
+  type: NodePort
+  selector:
+    name: mysql-pod
+    app: app-demo-kube
 
 
