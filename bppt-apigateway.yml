@@ -9,7 +9,7 @@ metadata:
 spec: 
   containers:
    - name: api-gateway-service
-     image: docker pull harbor.jojonomic.io/jojolab/api-gateway@sha256:03e7c46187a64c2faacb3cc91a250272f933d0d2bff033b505872b15ef14caa9
+     image: harbor.jojonomic.io/jojolab/api-gateway@sha256:03e7c46187a64c2faacb3cc91a250272f933d0d2bff033b505872b15ef14caa9
      ports:
      - containerPort: 80
 
