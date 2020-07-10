@@ -13,3 +13,21 @@ spec:
   imagePullSecrets:
   - name: regcred
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-service
+  labels: 
+    name: apache-service
+    app: apache-pod-harbor  
+spec: 
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+  selector:
+    name: apache-pod
+    app: apache-pod-harbor
+
+
