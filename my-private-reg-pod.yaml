@@ -5,7 +5,18 @@ metadata:
 spec:
   containers:
   - name: mysql-app
-    image: harbor.jojonomic.io/infra/mysql@sha256:6f603dccc80b540a0fc318c46a724440d3860fafb9a83f1658f577586a694254
+    image: harbor.jojonomic.io/infra/mysql:5.6.37
   imagePullSecrets:
   - name: regcred
 
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apache-pod
+spec:
+  containers:
+  - name: apache-app
+    image: harbor.jojonomic.io/infra/php/apache:centos7
+  imagePullSecrets:
+  - name: regcred
