@@ -20,9 +20,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-service
+  name: harbor-service
   labels: 
-    name: apache-harbor-service
+    name: harbor-service
     app: wordpress-app-demo-harbor   
 spec: 
   ports:
