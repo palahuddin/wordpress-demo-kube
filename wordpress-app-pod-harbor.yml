@@ -1,0 +1,34 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: apache-pod-harbor
+  labels: 
+    name: apache-pod-harbor
+    app: wordpress-app-demo-harbor   
+spec:
+  containers:
+  - name: apache-harbor
+    image: harbor.jojonomic.io/infra/wordpress:latest
+  imagePullSecrets:
+  - name: regcred
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+  labels: 
+    name: apache-harbor-service
+    app: wordpress-app-demo-harbor   
+spec: 
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+  selector:
+    name: apache-pod-harbor
+    app: wordpress-app-demo-harbor
+
+
