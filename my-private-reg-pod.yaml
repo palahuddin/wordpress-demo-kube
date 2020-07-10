@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: php-apache-pod
+  name: mysql-pod
 spec:
   containers:
-  - name: php-apache-pod
-    image: harbor.jojonomic.io/infra/php/apache@sha256:822252e82149a3d00c66d75b2bda027bc2c02327d258294151624ac067fd02c8
+  - name: mysql-app
+    image: harbor.jojonomic.io/infra/mysql@sha256:6f603dccc80b540a0fc318c46a724440d3860fafb9a83f1658f577586a694254
   imagePullSecrets:
   - name: regcred
 
